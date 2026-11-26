@@ -140,30 +140,6 @@
   const MAKS_REKOMENDASI = 0;
   let REKOMENDASI_IDS = [1, 2, 3, 4, 5]; // ID awal resep bawaan
 
-  // ===== KLIEN SUPABASE =====
-  const SUPABASE_URL = 'https://vdvlymemoqkgdpzgndhr.supabase.co';
-  const SUPABASE_KEY = 'sb_publishable_-xh3JEbtYgQ5ERgIf3VWGg_L5ETk7_d';
-  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY); 
-
-  async function muatData() {
-    try {
-      // Ambil seluruh resep dari database Supabase
-      const { data, error } = await supabaseClient
-        .from('resep')
-        .select('*')
-        .order('id', { ascending: false });
-
-      if (error) {
-        console.error("Error dari Supabase:", error);
-      } else if (data && data.length > 0) {
-        // Gabungkan resep dari Supabase ke array resep
-        RESEP = data;
-      }
-    } catch (e) {
-      console.warn("Gagal memuat dari Supabase, memakai data lokal.", e);
-    }
-  }
-
   // ===== Favorit =====
   let favorit = [1,2,3,4,5];
   try{
